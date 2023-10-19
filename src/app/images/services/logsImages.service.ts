@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http"
 import { Observable, catchError, map, of } from "rxjs";
 
 import { LogsImages } from "../interfaces/logsimages.interfaces";
-import { environments } from "../../../environments/environments";
+import { environments } from "../../../environments/environment";
 import { GroupHours } from "../interfaces/groupHours.interfaces";
 
 @Injectable({providedIn: 'root'})
