@@ -1,1 +1,31 @@
-<p>upload-page works!</p>
+<h1>Subir Archivo</h1>
+<mat-divider class="mb-2"></mat-divider>
+
+<div class="grid">
+    <div class="col-12 sm:col-6">
+        <mat-card>
+            <mat-card-content>
+                <div class="grid mb-3">
+                    <mat-form-field class="col-12">
+                        <mat-label>Nombre del usuario</mat-label>
+                        <input matInput type="text" required [(ngModel)]="value">
+                    </mat-form-field>
+
+                    <div class="col-12">
+                        <p>Adjuntar archivo</p>
+                        <input type="file" (change)="handleFileInput($event)" accept=".jpg, .jpeg">
+                    </div>
+                </div>
+                <button mat-flat-button color="warn" class="mr-3" [routerLink]="['/image/lists']">
+                    Cancelar
+                </button>
+                <span class="spacer"></span>
+                <button mat-flat-button color="primary" (click)="saveImg()">
+                    <mat-icon>save</mat-icon>
+                    Guardar
+                </button>
+            </mat-card-content>
+        </mat-card>
+    </div> 
+
+</div>

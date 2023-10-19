@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http"
-import { Observable } from "rxjs";
+import { Observable, catchError, map, of } from "rxjs";
 
 import { LogsImages } from "../interfaces/logsimages.interfaces";
 import { environments } from "../../../environments/environments";
@@ -18,5 +18,20 @@ export class LogsImagesService {
 
     getGroupHours():Observable<GroupHours[]>{
         return this.http.get<GroupHours[]>(`${this.baseUrl}/images/group/hours`);
+    }
+
+    postImage(nameUser:string, file: any): Observable<boolean>{
+        const formdata = new FormData();
+        formdata.append('img', file);
+        formdata.append('nameUser', nameUser);
+
+        return this.http
+            .post(`${this.baseUrl}/logsimages`, formdata)
+            .pipe(
+                catchError(err => of(false)),
+                map(resp =>true)
+            );
+        
+
     }
 }
